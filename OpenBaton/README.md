@@ -68,34 +68,34 @@
 > sudo su
 
 [安裝git]
-> apt-get install git
+> apt-get install git<br/>
 > exit -->離開root
 
 [建立stack使用者]
-> 解壓縮devstack.tgz到/home/
-> cd /home/devstack/tools/
+> 解壓縮devstack.tgz到/home/<br/>
+> cd /home/devstack/tools/<br/>
 > sudo ./create-stack-user.sh
 
 [編輯stack用戶權限]
-> sudo vi /etc/sudoers
-> 內容如下:
-> \# User privilege specification
-> root ALL=(ALL:ALL) ALL
+> sudo vi /etc/sudoers<br/>
+> 內容如下:<br/>
+> \# User privilege specification<br/>
+> root ALL=(ALL:ALL) ALL<br/>
 > stack ALL=(ALL:ALL) ALL
 
 [修改/home/devstack權限]
-> sudo su
-> chown –R stack:stack /home/devstack
-> chown –R stack:stack /opt/stack
+> sudo su<br/>
+> chown –R stack:stack /home/devstack<br/>
+> chown –R stack:stack /opt/stack<br/>
 
 [切換user到stack]
-> su stack
-> vi /home/devstack/local.conf
-> 修改內容如下:
-> > HOST_IP=對外的IP(能連到INTERNET的IP，EX:10.101.136.44)
-> > FLOATING_RANGE=改成欲要分配給VM的IP網段(EX:"10.101.136.0/24")
-> > Q_FLOATING_ALLOCATION_POOL=改成欲要分配給VM的IP區間(EX:start=10.101.136.120,end=10.101.136.134)
-> > PUBLIC_NETWORK_GATEWAY=對外的IP的GATEWAY(EX:"10.101.136.254")
+> su stack<br/>
+> vi /home/devstack/local.conf<br/>
+> 修改內容如下:<br/>
+> > HOST_IP=對外的IP(能連到INTERNET的IP，EX:10.101.136.44)<br/>
+> > FLOATING_RANGE=改成欲要分配給VM的IP網段(EX:"10.101.136.0/24")<br/>
+> > Q_FLOATING_ALLOCATION_POOL=改成欲要分配給VM的IP區間(EX:start=10.101.136.120,end=10.101.136.134)<br/>
+> > PUBLIC_NETWORK_GATEWAY=對外的IP的GATEWAY(EX:"10.101.136.254")<br/>
 > > PUBLIC_INTERFACE=OpenStack對外的網卡
 
 [安裝OpenStack]
@@ -103,19 +103,19 @@
 > 1. 解壓所stack.tgz到/opt/
 > 2. cd /home/devstack
 > 3. ./stack.sh (這次安裝會失敗)
-> 4. 遇到ERROR
-> 　4.1 vim /usr/local/lib/python2.7/dist-packages/openstack/session.py
-> 　4.2 去掉DEFAULT_USER_AGENT = "openstacksdk/%s" % openstack.__version__後面的.__version__
-> 　4.3 移除OpenStack
+> 4. 遇到ERROR<br/>
+`4.1 vim /usr/local/lib/python2.7/dist-packages/openstack/session.py`<br/>
+`4.2 去掉DEFAULT_USER_AGENT = "openstacksdk/%s" % openstack.__version__後面的.__version__`<br/>
+`4.3 移除OpenStack`<br/>
 > 5. ./stack.sh (這次能成功安裝)
-> 6. 修正VNC不正常(當OpenStack UI上的雲實例中的主控台無法使用時，需執行以下指令修正)
-> 　6.1 cd /opt/stack/noVNC
-> 　6.2 git checkout v0.6.0
+> 6. 修正VNC不正常(當OpenStack UI上的雲實例中的主控台無法使用時，需執行以下指令修正)<br/>
+`6.1 cd /opt/stack/noVNC`<br/>
+`6.2 git checkout v0.6.0`<br/>
 > *此後每次重開機都要執行./stack.sh，OpenStack才會啟動，且使用者為stack
 
 
 [移除OpenStack]
-> cd /home/devstack
+> cd /home/devstack<br/>
 > ./unstack.sh
 
 [取得OpenStack tokens]
