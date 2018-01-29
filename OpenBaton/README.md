@@ -171,7 +171,7 @@ URL: https://github.com/OaiTestBase/NFV-Orchestration-Demo-using-OAI-EPC/blob/ma
 5. check OAI VM status(on Open Baton ):
 >Login dashboard and go to Orchestrate NS -> NS Records, then find your NSR.<br/> If the NFVO finished their work the deployed NSR will change to ACTIVE state.
 
-6.Start X310 power and connect your USRP
+6. Start X310 power and connect your USRP
 
 7. Install eNB (on your pc/X310):<br/>
 Ref: https://hackmd.io/AwNgZmCGDMDGBMBaAnPA7MxAWewBGikeWIiYIIkw1AjACbQZA===#
